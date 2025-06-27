@@ -1,19 +1,17 @@
-/* ===== Configurações Globais ===== */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+/* ===== LIMITES ===== */
+.limite-central {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 0px;
 }
 
 /* ===== Títulos ===== */
-h1 {
+.pagina-pedido h1 {
   text-align: center;
-  color: #2c3e50;
-  margin-bottom: 30px;
 }
 
 /* ===== Formulários ===== */
-label {
+.pagina-pedido label {
   display: block;
   margin-bottom: 10px;
   font-weight: 500;

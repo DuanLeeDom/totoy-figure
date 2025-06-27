@@ -18,12 +18,13 @@
   <div class="header-categorias">
       <div class="container-categorias">
           <ul class="categorias">
-              <li class="categoria-item"><a href="#">Action Figures</a></li>
-              <li class="categoria-item"><a href="#">Estatuetas</a></li>
-              <li class="categoria-item"><a href="#">Colecionáveis</a></li>
-              <li class="categoria-item"><a href="#">Acessórios</a></li>
-              <li class="categoria-item"><a href="#">Novidades</a></li>
-              <li class="categoria-item"><a href="#">Promoções</a></li>
+              <li class="categoria-item"><a href="#action-figures" onclick="mostrarCategoria('action-figures')">Action Figures</a></li>
+              <li class="categoria-item"><a href="#estatuetas" onclick="mostrarCategoria('estatuetas')">Estatuetas</a></li>
+              <li class="categoria-item"><a href="#colecionaveis" onclick="mostrarCategoria('colecionaveis')">Colecionáveis</a></li>
+              <li class="categoria-item"><a href="#acessorios" onclick="mostrarCategoria('acessorios')">Acessórios</a></li>
+              <li class="categoria-item"><a href="#novidades" onclick="mostrarCategoria('novidades')">Novidades</a></li>
+              <li class="categoria-item"><a href="#promocoes" onclick="mostrarCategoria('promocoes')">Promoções</a></li>
+              <li class="categoria-item"><a href="#todos" onclick="mostrarCategoria('todos')">Todos</a></li>
           </ul>
       </div>
   </div>
@@ -39,18 +40,114 @@
       </div>
   </div>
 
-  <div class="container-categorias-pai">
+  <!-- Seção Action Figures -->
+  <div class="container-categorias-pai categoria-section" id="action-figures">
       <div class="catalagos">
           <div class="titulo-produtos-1">
-              <h2>Produtos em Destaque</h2>
+              <h2>Action Figures</h2>
           </div>
-
           <div class="container-produtos">
-              <button class="seta esquerda">⟨</button>
+              <button class="seta esquerda" onclick="scrollCategoria('action-figures', -500)">⟨</button>
               <div class="caixa-produtos">
-                  <div id="vitrine" class="vitrine"></div>
+                  <div id="vitrine-action-figures" class="vitrine"></div>
               </div>
-              <button class="seta direita">⟩</button>
+              <button class="seta direita" onclick="scrollCategoria('action-figures', 500)">⟩</button>
+          </div>
+      </div>
+  </div>
+
+  <!-- Seção Estatuetas -->
+  <div class="container-categorias-pai categoria-section" id="estatuetas">
+      <div class="catalagos">
+          <div class="titulo-produtos-1">
+              <h2>Estatuetas</h2>
+          </div>
+          <div class="container-produtos">
+              <button class="seta esquerda" onclick="scrollCategoria('estatuetas', -500)">⟨</button>
+              <div class="caixa-produtos">
+                  <div id="vitrine-estatuetas" class="vitrine"></div>
+              </div>
+              <button class="seta direita" onclick="scrollCategoria('estatuetas', 500)">⟩</button>
+          </div>
+      </div>
+  </div>
+
+  <!-- Seção Colecionáveis -->
+  <div class="container-categorias-pai categoria-section" id="colecionaveis">
+      <div class="catalagos">
+          <div class="titulo-produtos-1">
+              <h2>Colecionáveis</h2>
+          </div>
+          <div class="container-produtos">
+              <button class="seta esquerda" onclick="scrollCategoria('colecionaveis', -500)">⟨</button>
+              <div class="caixa-produtos">
+                  <div id="vitrine-colecionaveis" class="vitrine"></div>
+              </div>
+              <button class="seta direita" onclick="scrollCategoria('colecionaveis', 500)">⟩</button>
+          </div>
+      </div>
+  </div>
+
+  <!-- Seção Acessórios -->
+  <div class="container-categorias-pai categoria-section" id="acessorios" style="display: none;">
+      <div class="catalagos">
+          <div class="titulo-produtos-1">
+              <h2>Acessórios</h2>
+          </div>
+          <div class="container-produtos">
+              <button class="seta esquerda" onclick="scrollCategoria('acessorios', -500)">⟨</button>
+              <div class="caixa-produtos">
+                  <div id="vitrine-acessorios" class="vitrine"></div>
+              </div>
+              <button class="seta direita" onclick="scrollCategoria('acessorios', 500)">⟩</button>
+          </div>
+      </div>
+  </div>
+
+  <!-- Seção Novidades -->
+  <div class="container-categorias-pai categoria-section" id="novidades">
+      <div class="catalagos">
+          <div class="titulo-produtos-1">
+              <h2>Novidades</h2>
+          </div>
+          <div class="container-produtos">
+              <button class="seta esquerda" onclick="scrollCategoria('novidades', -500)">⟨</button>
+              <div class="caixa-produtos">
+                  <div id="vitrine-novidades" class="vitrine"></div>
+              </div>
+              <button class="seta direita" onclick="scrollCategoria('novidades', 500)">⟩</button>
+          </div>
+      </div>
+  </div>
+
+  <!-- Seção Promoções -->
+  <div class="container-categorias-pai categoria-section" id="promocoes">
+      <div class="catalagos">
+          <div class="titulo-produtos-1">
+              <h2>Promoções</h2>
+          </div>
+          <div class="container-produtos">
+              <button class="seta esquerda" onclick="scrollCategoria('promocoes', -500)">⟨</button>
+              <div class="caixa-produtos">
+                  <div id="vitrine-promocoes" class="vitrine"></div>
+              </div>
+              <button class="seta direita" onclick="scrollCategoria('promocoes', 500)">⟩</button>
+          </div>
+      </div>
+  </div>
+
+  <!-- Seção Todos os Produtos -->
+  <div class="container-categorias-pai categoria-section" id="todos" style="display: none;">
+      <div class="catalagos">
+          <div class="titulo-produtos-1">
+              <h2>Todos os Produtos</h2>
+          </div>
+          <div class="container-produtos">
+              <button class="seta esquerda" onclick="scrollCategoria('todos', -500)">⟨</button>
+              <div class="caixa-produtos">
+                  <div id="vitrine-todos" class="vitrine"></div>
+              </div>
+              <button class="seta direita" onclick="scrollCategoria('todos', 500)">⟩</button>
           </div>
       </div>
   </div>
@@ -66,7 +163,7 @@
 
     fetch("../components/footer.html")
       .then(res => res.text())
-      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);   
   </script>
 </body>
 </html>

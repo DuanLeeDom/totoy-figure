@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - Totoy Figure</title>
+    <link rel="stylesheet" href="../css/sobre.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <script src="../js/page.js" defer></script>
+    <script src="../js/localStorage.js" defer></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <div class="pagina-sobre">
+        <div class="hero-section">
+            <h1>Sobre Nós</h1>
+            <p class="hero-subtitle">Bem-vindo à Totoy Figure, sua loja online de action figures e colecionáveis!</p>
+        </div>
+
+        <div class="content-grid">
+            <div class="content-card">
+                <span class="card-icon">🎯</span>
+                <h3>Nossa Missão</h3>
+                <p>Nosso objetivo é oferecer uma ampla variedade de produtos de alta qualidade para colecionadores e entusiastas, proporcionando uma experiência única de compra.</p>
+            </div>
+            <div class="content-card">
+                <span class="card-icon">⭐</span>
+                <h3>Qualidade Premium</h3>
+                <p>Trabalhamos apenas com fornecedores confiáveis e produtos originais, garantindo autenticidade e qualidade em cada item do nosso catálogo.</p>
+            </div>
+            <div class="content-card">
+                <span class="card-icon">🚀</span>
+                <h3>Novidades Constantes</h3>
+                <p>Explore nossas categorias, descubra novidades e aproveite promoções exclusivas. Sempre atualizamos nosso estoque com os lançamentos mais esperados.</p>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item"><h4>500+</h4><p>Produtos Disponíveis</p></div>
+                <div class="stat-item"><h4>10k+</h4><p>Clientes Satisfeitos</p></div>
+                <div class="stat-item"><h4>4.5★</h4><p>Avaliação dos Clientes</p></div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <a href="../index.html" class="cta-button">Explore Nossa Loja</a>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        fetch("../components/header.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("header-placeholder").innerHTML = data);
+
+        fetch("../components/footer.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+    </script>
+</body>
+</html>

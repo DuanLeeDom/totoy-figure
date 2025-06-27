@@ -1,14 +1,11 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+/* ===== LIMITES ===== */
+.limite-central {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 0px;
 }
 
-h1 {
-  text-align: center;
-  color: #2c3e50;
-}
-
+/* ===== ESTILOS GERAIS ===== */
 fieldset {
   border: 2px solid #ccc;
   padding: 15px 20px;

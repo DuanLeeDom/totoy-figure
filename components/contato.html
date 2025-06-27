@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Totoy Figure</title>
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-+wPq+1LtF6apTz3xK9FdT69DOvHhkNGdHmbqBbL4I9HYi8kH2OQ8lLK4K4mdXY7KrUeJjT9O5f9T6o+8JAZyZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/contato.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
+    <!-- Scripts -->
+    <script src="../js/page.js"></script>
+    <script src="../js/localStorage.js" defer></script>
+    <script src="../js/contato.js" defer></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <section class="pagina-sobre">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1>Entre em Contato</h1>
+            <p class="hero-subtitle">Estamos à disposição para atender suas dúvidas, sugestões ou agendamentos.</p>
+        </div>
+
+        <!-- Grid de Conteúdo -->
+        <div class="content-grid">
+
+            <!-- Formulário -->
+            <div class="content-card">
+                <i class="fas fa-paper-plane card-icon"></i>
+                <h3>Envie uma Mensagem</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" name="mensagem" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Enviar</button>
+                </form>
+            </div>
+
+            <!-- Informações de Contato -->
+            <div class="content-card">
+                <i class="fas fa-info-circle card-icon"></i>
+                <h3>Informações</h3>
+
+                <!-- Item de Contato - Telefone -->
+                <div class="contato-item">
+                    <div class="contato-icon">
+                        <i class="fas fa-phone"></i> <!-- Ícone de telefone -->
+                    </div>
+                    <div class="contato-info">
+                        <h3>Telefone</h3>
+                        <p>(11) 1234-5678</p>
+                    </div>
+                </div>
+
+                <!-- Item de Contato - E-mail -->
+                <div class="contato-item">
+                    <div class="contato-icon">
+                        <i class="fas fa-envelope"></i> <!-- Ícone de envelope -->
+                    </div>
+                    <div class="contato-info">
+                        <h3>E-mail</h3>
+                        <p>contato@exemplo.com</p>
+                    </div>
+                </div>
+
+                <!-- Item de Contato - Endereço -->
+                <div class="contato-item">
+                    <div class="contato-icon">
+                        <i class="fas fa-map-marker-alt"></i> <!-- Ícone de mapa -->
+                    </div>
+                    <div class="contato-info">
+                        <h3>Endereço</h3>
+                        <p>Rua Exemplo, 123 - São Paulo, SP</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Horários -->
+        <div class="stats-section">
+            <div class="hero-section">
+                <h2>Horários de Atendimento</h2>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h4>Seg a Sex</h4>
+                    <p>08:00 às 18:00</p>
+                </div>
+                <div class="stat-item">
+                    <h4>Sábado</h4>
+                    <p>09:00 às 14:00</p>
+                </div>
+                <div class="stat-item">
+                    <h4>Domingos e Feriados</h4>
+                    <p>Fechado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        fetch("../components/header.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("header-placeholder").innerHTML = data);
+
+        fetch("../components/footer.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+    </script>
+</body>
+</html>

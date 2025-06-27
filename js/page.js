@@ -1,7 +1,55 @@
-const vitrine = document.getElementById("vitrine");
 const maxCaracteres = 40;
-const btnEsquerda = document.querySelector(".seta.esquerda");
-const btnDireita = document.querySelector(".seta.direita");
+const TEXTOS_BOTAO = {
+    comprar: "Comprar",
+    cancelar: "Cancelar Pedido"
+};
+
+// Categorização dos produtos baseada na descrição e preço
+const categorizarProdutos = () => {
+    const categorias = {
+        'action-figures': [],
+        'estatuetas': [], 
+        'colecionaveis': [],
+        'acessorios': [],
+        'novidades': [],
+        'promocoes': []
+    };
+
+    produtos.forEach((produto, index) => {
+        const descricao = produto.descricao.toLowerCase();
+        const preco = parseFloat(produto.preco.replace(/\./g, "").replace(",", "."));
+        
+        // Produtos com "figura articulada" ou preço entre 300-800 = Action Figures
+        if (descricao.includes('articulada') || descricao.includes('pose dinâmica') || 
+            (preco >= 300 && preco <= 800)) {
+            categorias['action-figures'].push({...produto, index});
+        }
+        // Produtos com "estátua", "miniatura" ou preço acima de 1000 = Estatuetas
+        else if (descricao.includes('estátua') || descricao.includes('miniatura') || 
+                 descricao.includes('acabamento premium') || preco >= 1000) {
+            categorias['estatuetas'].push({...produto, index});
+        }
+        // Produtos com "colecionável", "coleção" ou "edição especial" = Colecionáveis
+        else if (descricao.includes('colecionável') || descricao.includes('coleção') || 
+                 descricao.includes('edição especial') || descricao.includes('exclusivo')) {
+            categorias['colecionaveis'].push({...produto, index});
+        }
+        // Produtos com preço baixo (abaixo de 100) = Promoções
+        else if (preco < 100) {
+            categorias['promocoes'].push({...produto, index});
+        }
+        // Produtos dos últimos 6 do array = Novidades
+        else if (index >= produtos.length - 6) {
+            categorias['novidades'].push({...produto, index});
+        }
+        // Resto vai para colecionáveis
+        else {
+            categorias['colecionaveis'].push({...produto, index});
+        }
+    });
+
+    return categorias;
+};
 
 // === FUNÇÃO UTILITÁRIA: Resolver caminho da imagem ===
 function CaminhoImagem(caminho) {
@@ -28,7 +76,6 @@ function adicionarAoCarrinho(produtoId) {
 
     const carrinho = obterCarrinho();
     
-    // Verificar se o produto já existe no carrinho
     const itemExistente = carrinho.find(item => item.id === produtoId);
     
     if (itemExistente) {
@@ -46,9 +93,6 @@ function adicionarAoCarrinho(produtoId) {
     
     salvarCarrinho(carrinho);
     atualizarBotaoCarrinho(produtoId, true);
-    
-    // Mostrar feedback visual
-    // alert(`${produto.nome} foi adicionado ao carrinho!`);
 }
 
 function removerDoCarrinho(produtoId) {
@@ -62,11 +106,11 @@ function atualizarBotaoCarrinho(produtoId, adicionado) {
     const botao = document.querySelector(`#produto-${produtoId} .botao-carrinho`);
     if (botao) {
         if (adicionado) {
-            botao.textContent = "Remover do carrinho";
+            botao.textContent = TEXTOS_BOTAO.cancelar;
             botao.classList.add("carrinho-ativo");
             botao.onclick = () => removerDoCarrinho(produtoId);
         } else {
-            botao.textContent = "Adicionar ao carrinho";
+            botao.textContent = TEXTOS_BOTAO.comprar;
             botao.classList.remove("carrinho-ativo");
             botao.onclick = () => adicionarAoCarrinho(produtoId);
         }
@@ -82,92 +126,139 @@ function irParaCarrinho() {
     window.location.href = './components/carrinho.html';
 }
 
-// === FUNÇÃO: Renderizar produtos na vitrine ===
-function renderizarVitrine() {
-    produtos.forEach((produto, index) => {
-        const div = document.createElement("div");
-        div.className = "produto";
-        div.id = `produto-${index}`;
+// === FUNÇÃO: Criar elemento de produto ===
+function criarElementoProduto(produto, index) {
+    const div = document.createElement("div");
+    div.className = "produto";
+    div.id = `produto-${index}`;
 
-        const img = document.createElement("img");
-        img.src = CaminhoImagem(produto.imagem);
-        img.alt = produto.nome;
+    const img = document.createElement("img");
+    img.src = CaminhoImagem(produto.imagem);
+    img.alt = produto.nome;
 
-        const titulo = document.createElement("h2");
-        const nomeCurto = produto.nome.length >= maxCaracteres 
-            ? produto.nome.substring(0, maxCaracteres) + "..."
-            : produto.nome;
-        titulo.textContent = nomeCurto;
+    const titulo = document.createElement("h2");
+    const nomeCurto = produto.nome.length >= maxCaracteres 
+        ? produto.nome.substring(0, maxCaracteres) + "..."
+        : produto.nome;
+    titulo.textContent = nomeCurto;
 
-        const precoNumerico = parseFloat(produto.preco.replace(/\./g, "").replace(",", "."));
-        const preco = document.createElement("h3");
-        const precoFormatado = precoNumerico.toFixed(2).replace(".", ",");
-        preco.textContent = "R$ " + precoFormatado;
+    const precoNumerico = parseFloat(produto.preco.replace(/\./g, "").replace(",", "."));
+    const preco = document.createElement("h3");
+    const precoFormatado = precoNumerico.toFixed(2).replace(".", ",");
+    preco.textContent = "R$ " + precoFormatado;
 
-        const estrelas = document.createElement("div");
-        estrelas.className = "estrelas";
-        const rating = produto.avaliacao || 4;
-        const estrelasCheias = Math.floor(rating);
-        const temMeiaEstrela = rating % 1 >= 0.5;
+    const estrelas = document.createElement("div");
+    estrelas.className = "estrelas";
+    const rating = produto.avaliacao || 4;
+    const estrelasCheias = Math.floor(rating);
+    const temMeiaEstrela = rating % 1 >= 0.5;
 
-        for (let i = 1; i <= 5; i++) {
-            const estrela = document.createElement("span");
-            if (i <= estrelasCheias) estrela.innerHTML = "★";
-            else if (i === estrelasCheias + 1 && temMeiaEstrela) estrela.innerHTML = "⯨";
-            else estrela.innerHTML = "☆";
-            estrelas.appendChild(estrela);
-        }
+    for (let i = 1; i <= 5; i++) {
+        const estrela = document.createElement("span");
+        if (i <= estrelasCheias) estrela.innerHTML = "★";
+        else if (i === estrelasCheias + 1 && temMeiaEstrela) estrela.innerHTML = "⯨";
+        else estrela.innerHTML = "☆";
+        estrelas.appendChild(estrela);
+    }
 
-        const precoParcelado = document.createElement("p");
-        let parcelas = 12;
-        while (parcelas > 1 && (precoNumerico / parcelas) < 10) parcelas--;
+    const precoParcelado = document.createElement("p");
+    let parcelas = 12;
+    while (parcelas > 1 && (precoNumerico / parcelas) < 10) parcelas--;
 
-        const botaoCarrinho = document.createElement("button");
-        botaoCarrinho.className = "botao-carrinho";
-        
-        // Verificar se o produto já está no carrinho
-        const jaNoCarrinho = verificarProdutoNoCarrinho(index);
-        
-        if (jaNoCarrinho) {
-            botaoCarrinho.textContent = "Remover do carrinho";
-            botaoCarrinho.classList.add("carrinho-ativo");
-            botaoCarrinho.onclick = () => removerDoCarrinho(index);
-        } else {
-            botaoCarrinho.textContent = "Adicionar ao carrinho";
-            botaoCarrinho.onclick = () => adicionarAoCarrinho(index);
-        }
+    const botaoCarrinho = document.createElement("button");
+    botaoCarrinho.className = "botao-carrinho";
+    
+    const jaNoCarrinho = verificarProdutoNoCarrinho(index);
+    
+    if (jaNoCarrinho) {
+        botaoCarrinho.textContent = TEXTOS_BOTAO.cancelar;
+        botaoCarrinho.classList.add("carrinho-ativo");
+        botaoCarrinho.onclick = () => removerDoCarrinho(index);
+    } else {
+        botaoCarrinho.textContent = TEXTOS_BOTAO.comprar;
+        botaoCarrinho.onclick = () => adicionarAoCarrinho(index);
+    }
 
-        // Botão para ir ao carrinho
-        const botaoIrCarrinho = document.createElement("button");
-        botaoIrCarrinho.onclick = irParaCarrinho;
+    div.appendChild(img);
+    div.appendChild(titulo);
+    div.appendChild(estrelas);
+    if (precoNumerico >= 50 && parcelas > 1) {
+        const valorParcela = (precoNumerico / parcelas).toFixed(2).replace(".", ",");
+        precoParcelado.textContent = `ou ${parcelas}x de R$ ${valorParcela} sem juros`;
+        div.appendChild(precoParcelado);
+    }
+    div.appendChild(preco);
+    div.appendChild(botaoCarrinho);
 
-        div.appendChild(img);
-        div.appendChild(titulo);
-        div.appendChild(estrelas);
-        if (precoNumerico >= 50 && parcelas > 1) {
-            const valorParcela = (precoNumerico / parcelas).toFixed(2).replace(".", ",");
-            precoParcelado.textContent = `ou ${parcelas}x de R$ ${valorParcela} sem juros`;
-            div.appendChild(precoParcelado);
-        }
-        div.appendChild(preco);
-        div.appendChild(botaoCarrinho);
-        vitrine.appendChild(div);
+    return div;
+}
+
+// === FUNÇÃO: Renderizar produtos por categoria ===
+function renderizarCategoria(categoria, produtosCategoria) {
+    const vitrine = document.getElementById(`vitrine-${categoria}`);
+    if (!vitrine) return;
+
+    vitrine.innerHTML = ''; // Limpar conteúdo anterior
+
+    produtosCategoria.forEach(produto => {
+        const elementoProduto = criarElementoProduto(produto, produto.index);
+        vitrine.appendChild(elementoProduto);
     });
 }
 
-// === SCROLL DAS SETAS ===
-if (btnEsquerda) {
-    btnEsquerda.addEventListener("click", () => {
-        vitrine.scrollBy({ left: -500, behavior: "smooth" });
+// === FUNÇÃO: Renderizar todas as categorias ===
+function renderizarTodasCategorias() {
+    const categorias = categorizarProdutos();
+    
+    // Renderizar cada categoria
+    Object.keys(categorias).forEach(categoria => {
+        renderizarCategoria(categoria, categorias[categoria]);
     });
+
+    // Renderizar "todos os produtos"
+    const vitrineTodos = document.getElementById('vitrine-todos');
+    if (vitrineTodos) {
+        vitrineTodos.innerHTML = '';
+        produtos.forEach((produto, index) => {
+            const elementoProduto = criarElementoProduto(produto, index);
+            vitrineTodos.appendChild(elementoProduto);
+        });
+    }
 }
 
-if (btnDireita) {
-    btnDireita.addEventListener("click", () => {
-        vitrine.scrollBy({ left: 500, behavior: "smooth" });
+// === FUNÇÃO: Mostrar categoria específica ===
+function mostrarCategoria(categoria) {
+    // Esconder todas as seções
+    const secoes = document.querySelectorAll('.categoria-section');
+    secoes.forEach(secao => {
+        secao.style.display = 'none';
     });
+
+    // Mostrar apenas a categoria selecionada
+    const secaoSelecionada = document.getElementById(categoria);
+    if (secaoSelecionada) {
+        secaoSelecionada.style.display = 'block';
+    }
+
+    // Se for "todos", mostrar todas as seções
+    if (categoria === 'todos') {
+        secoes.forEach(secao => {
+            if (secao.id !== 'acessorios') { // Acessórios fica oculto por não ter produtos
+                secao.style.display = 'block';
+            }
+        });
+    }
 }
 
+// === FUNÇÃO: Scroll das categorias ===
+function scrollCategoria(categoria, quantidade) {
+    const vitrine = document.getElementById(`vitrine-${categoria}`);
+    if (vitrine) {
+        vitrine.scrollBy({ left: quantidade, behavior: "smooth" });
+    }
+}
+
+// === FUNÇÃO: Inicializar carrossel ===
 function iniciarCarrossel() {
     const carouselInner = document.getElementById("carousel-inner");
     const carouselDots = document.getElementById("carousel-dots");
@@ -208,8 +299,12 @@ function iniciarCarrossel() {
 
 // === INICIALIZAÇÃO ===
 document.addEventListener("DOMContentLoaded", () => {
-    if (vitrine && typeof produtos !== 'undefined') {
-        renderizarVitrine();
+    if (typeof produtos !== 'undefined') {
+        renderizarTodasCategorias();
+        // Mostrar apenas Action Figures por padrão
+        mostrarCategoria('todos');
+
+
     }
     if (typeof imagensBanner !== 'undefined') {
         iniciarCarrossel();

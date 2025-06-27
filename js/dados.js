@@ -138,5 +138,75 @@ const produtos = [
     preco: "599,99",
     imagem: "https://lojalimitededition.vteximg.com.br/arquivos/ids/412762-1000-1000/image-f7352b18199542a0bae6fd32871b821a.jpg?v=638203826758330000",
     avaliacao: 4.5
+  },
+  {
+    nome: "Darth Maul (MMS748)",
+    descricao: "Figura com ótimo nível de detalhe e ideal para coleções temáticas de Star Wars.",
+    preco: "3511,90",
+    imagem: "https://actionfigurebrasil.com.br/cdn/shop/files/darth-maul_star-wars_gallery_6635113ac82c3.jpg?v=1750440943",
+    avaliacao: 5
+  },
+  {
+    nome: "Fennec Shand (TMS068)",
+    descricao: "Figura com ótimo nível de detalhe e ideal para coleções temáticas de Star Wars.",
+    preco: "2393,00",
+    imagem: "https://actionfigurebrasil.com.br/cdn/shop/files/fennec-shand_star-wars_gallery_61c29413cce58.jpg?v=1750440966",
+    avaliacao: 5
+  },
+  {
+    nome: "Nicepool (Pré-venda) (MMS788)",
+    descricao: "Figura com ótimo nível de detalhe e ideal para coleções temáticas de Deadpool & Wolverine.",
+    preco: "2866,00",
+    imagem: "https://actionfigurebrasil.com.br/cdn/shop/files/hot-toys-marvel-nicepool-sixth-scale-figure-gallery-6776bda0d62f9.jpg?v=1750440996",
+    avaliacao: 5
+  },
+  {
+    nome: "Blade (Pré-venda) (MMS791)",
+    descricao: "Figura com ótimo nível de detalhe e ideal para coleções temáticas de Marvel.",
+    preco: "2794,90",
+    imagem: "https://actionfigurebrasil.com.br/cdn/shop/files/hot-toys-marvel-blade-sixth-scale-figure-gallery-67a23dbda070e.jpg?v=1750441023",
+    avaliacao: 5
+  },
+  {
+    nome: "Batman (Deluxe Version) (Pré-venda) (MMS770)",
+    descricao: "Figura com ótimo nível de detalhe e ideal para coleções temáticas de DC Comics.",
+    preco: "3167,00",
+    imagem: "https://actionfigurebrasil.com.br/cdn/shop/files/batman-deluxe-version_dc-comics_gallery_66ed91fe3cc04.jpg?v=1750441052",
+    avaliacao: 5
+  },
+  {
+    nome: "POP! Justice League Superman",
+    descricao: "Figura com ótimo nível de detalhe e ideal para coleções temáticas de DC Comics.",
+    preco: "521,88",
+    imagem: "https://actionfigurebrasil.com.br/cdn/shop/files/602155538m.jpg?v=1748399725",
+    avaliacao: 5
+  },
+  {
+    nome: "POP! Hellboy Rasputin",
+    descricao: "Figura com ótimo nível de detalhe e ideal para coleções temáticas de Hellboy.",
+    preco: "532,88",
+    imagem: "https://actionfigurebrasil.com.br/cdn/shop/files/602158857m.jpg?v=1748399716",
+    avaliacao: 5
+  },
+  {
+    nome: "Five Star Harry Potter Ron Weasley",
+    descricao: "Figura com ótimo nível de detalhe e ideal para coleções temáticas de Harry Potter.",
+    preco: "763,00",
+    imagem: "https://actionfigurebrasil.com.br/cdn/shop/files/602167422m.jpg?v=1747306583",
+    avaliacao: 5
+  },
+  {
+    nome: "Five Star Harry Potter Harry Potter",
+    descricao: "Figura com ótimo nível de detalhe e ideal para coleções temáticas de Harry Potter.",
+    preco: "465,00",
+    imagem: "https://actionfigurebrasil.com.br/cdn/shop/files/602167421m.jpg?v=1747306581",
+    avaliacao: 5
+  },
+  {
+    nome: "Vynl. Marvel Comics Deadpool & Cable",
+    descricao: "Figura com ótimo nível de detalhe e ideal para coleções temáticas de Marvel Comics.",
+    preco: "8,00",
+    imagem: "https://actionfigurebrasil.com.br/cdn/shop/files/FIGURE-039584_01.jpg?v=1748918571",
+    avaliacao: 5
   }
 ];

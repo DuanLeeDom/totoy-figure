@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrinho - TOTOY FIGURE</title>
+
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/carrinho.css">
@@ -11,12 +12,13 @@
     <script defer src="../js/carrinho.js"></script>
 </head>
 <body>
-    <!-- Cabeçário onde terá a tela necessária para funcionar -->
+    <!-- Cabeçalho carregado dinamicamente -->
     <div id="header-placeholder"></div>
 
     <div style="padding: 20px; max-width: 1200px; margin: 0 auto;">
         <h1 style="text-align: center; color: #333; margin-bottom: 30px;">Meu Carrinho</h1>
         
+        <!-- Tabela de Produtos no Carrinho -->
         <fieldset>
             <legend><strong>Produtos no Carrinho</strong></legend>
             <div style="overflow-x: auto;">
@@ -40,10 +42,10 @@
         </fieldset>
     </div>
 
-    <!-- Rodapé será carregado aqui -->
+    <!-- Rodapé carregado dinamicamente -->
     <div id="footer-placeholder"></div>
 
-    <!-- Carregar header e footer via JavaScript -->
+    <!-- Scripts para carregar Header e Footer -->
     <script>
         fetch("../components/header.html")
             .then(res => res.text())
