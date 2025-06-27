@@ -1,25 +1,62 @@
 /* === RODAPÉ === */
 .footer-content {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: auto;
-    height: 200px;
-    padding: 0 40px;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 30px 50px;
     background-color: #444;
     color: white;
-    z-index: 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    gap: 30px;
+    box-sizing: border-box;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+    flex: 1;
+    min-width: 220px;
 }
 
 .footer-left {
     text-align: left;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.footer-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-social {
+    display: flex;
+    list-style: none;
+    gap: 18px;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-social img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-social img:hover {
+    transform: scale(1.15);
+    opacity: 0.8;
 }
 
 .footer-right {
     display: flex;
-    gap: 20px;         
-    list-style: none;  
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    list-style: none;
     margin: 0;
     padding: 0;
 }
@@ -27,15 +64,60 @@
 .footer-right li a {
     text-decoration: none;
     color: var(--blue-link);
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-.footer-social{
-    display: flex;
+.footer-right li a:hover {
+    color: #ccc;
+}
+
+/* === COLABORADORES === */
+.footer-collaborators {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 25px 20px;
+    border-top: 1px solid #555;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-collaborators p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-collaborators ul {
     list-style: none;
-    gap: 10px;
+    padding: 0;
+    margin: 0;
 }
 
-.footer-social img {
-    width: 24px;
-    height: 24px;
+.footer-collaborators li {
+    margin: 6px 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* Responsividade básica */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-left,
+    .footer-right {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-right {
+        flex-direction: column;
+    }
 }
