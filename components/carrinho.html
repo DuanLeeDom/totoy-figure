@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - TOTOY FIGURE</title>
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/carrinho.css">
+    <script src="../js/dados.js"></script>
+    <script defer src="../js/carrinho.js"></script>
+</head>
+<body>
+    <!-- Cabeçário onde terá a tela necessária para funcionar -->
+    <div id="header-placeholder"></div>
+
+    <div style="padding: 20px; max-width: 1200px; margin: 0 auto;">
+        <h1 style="text-align: center; color: #333; margin-bottom: 30px;">Meu Carrinho</h1>
+        
+        <fieldset>
+            <legend><strong>Produtos no Carrinho</strong></legend>
+            <div style="overflow-x: auto;">
+                <table border="1" id="produtosCarrinhos" style="width: 100%; border-collapse: collapse;">
+                    <thead id="tHead">
+                        <tr style="background-color: #f8f9fa;">
+                            <th style="padding: 12px; text-align: center;">ID</th>
+                            <th style="padding: 12px; text-align: center;">Imagem</th>
+                            <th style="padding: 12px; text-align: center;">Produto</th>
+                            <th style="padding: 12px; text-align: center;">Descrição</th>
+                            <th style="padding: 12px; text-align: center;">Valor Unitário</th>
+                            <th style="padding: 12px; text-align: center;">Quantidade</th>
+                            <th style="padding: 12px; text-align: center;">Valor Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tBody">
+                        <!-- Os produtos serão carregados dinamicamente aqui -->
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+    </div>
+
+    <!-- Rodapé será carregado aqui -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Carregar header e footer via JavaScript -->
+    <script>
+        fetch("../components/header.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("header-placeholder").innerHTML = data);
+
+        fetch("../components/footer.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <link rel="stylesheet" href="../css/registro.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <script src="../js/page.js"></script>
+    <script src="../js/localStorage.js" defer></script>
+    <script src="../js/formulario.js" defer></script>
+<head>
+  <meta charset="UTF-8">
+  <title>registro</title>
+</head>
+<body> 
+  <div id="header-placeholder"></div>
+
+  <!-- Começo do conteúdo da página -->
+  <div class="pagina-registro">
+    <h1>Finalizar Registro</h1>
+    
+     <div class="form-section">
+    <fieldset>
+      <legend><strong>Cliente</strong></legend>
+      <label>CPF: <input type="text" name="cpf" id="cpf" class="inputs"></label>
+      <label>Nome: <input type="text" name="nome" id="nome" class="inputs"></label>
+      <label>E-mail: <input type="email" id="email" name="email" class="inputs"></label>
+    </fieldset>
+  </div>
+
+  <div class="form-section">
+    <fieldset>
+      <legend><strong>Endereço</strong></legend>
+      <label>Cep: <input type="text" name="cep" id="cep" class="inputs"></label>
+      <label>Logradouro: <input type="text" id="logradouro" name="logradouro" class="inputs"></label>
+      <label>Número: <input type="text" name="numero"id="numero" class="inputs"></label>
+      <label>Bairro: <input type="text" name="bairro" id="bairro"class="inputs"></label>
+      <label>Cidade: <input type="text" name="cidade" id="cidade"class="inputs"></label>
+      <label>Estado: <input type="text" name="estado" id="estado"class="inputs" ></label>
+    </fieldset>
+  
+        </fieldset>
+      </div>
+    
+    <button id="finalizarPedidoBtn">Finalizar registro</button>
+  </div>
+  <!-- Fim do conteúdo da página -->
+
+  <div id="footer-placeholder"></div>
+
+  <script>
+    fetch("../components/header.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("header-placeholder").innerHTML = data);
+
+    fetch("../components/footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+  </script>
+</body>
+</html>

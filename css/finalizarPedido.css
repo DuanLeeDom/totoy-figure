@@ -1,0 +1,203 @@
+/* ===== Configurações Globais ===== */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* ===== Títulos ===== */
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+/* ===== Formulários ===== */
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.inputs {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* ===== Fieldset ===== */
+fieldset {
+  border: 2px solid #ccc;
+  padding: 15px 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+  margin: 20px auto;
+}
+
+legend {
+  font-weight: bold;
+  color: #2c3e50;
+  padding: 0 10px;
+}
+
+/* ===== Seções do formulário ===== */
+.form-section {
+  margin-bottom: 25px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== Contêiner da Página ===== */
+.pagina-pedido {
+  margin: 60px auto;
+  padding: 30px;
+  max-width: 900px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== Tabela de Produtos ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+}
+
+/* ===== ALINHAMENTOS ESPECÍFICOS DA TABELA ===== */
+/* Alinhamento à direita para valores monetários */
+#produtosCarrinhos tbody td:nth-child(5),
+#produtosCarrinhos tbody td:nth-child(7) {
+  text-align: right;
+  font-family: 'Courier New', monospace;
+  font-weight: 500;
+  white-space: nowrap;
+  min-width: 120px;
+}
+
+/* Alinhamento à esquerda para descrição */
+#produtosCarrinhos tbody td:nth-child(4) {
+  text-align: left;
+  padding-left: 15px;
+}
+
+/* Headers com alinhamento específico */
+#produtosCarrinhos thead th:nth-child(5),
+#produtosCarrinhos thead th:nth-child(7) {
+  text-align: right;
+  white-space: nowrap;
+  min-width: 120px;
+}
+
+#produtosCarrinhos thead th:nth-child(4) {
+  text-align: left;
+  padding-left: 15px;
+}
+
+th {
+  background-color: #f0f0f0;
+}
+
+/* ===== AJUSTES PARA IMAGENS DOS PRODUTOS ===== */
+#produtosCarrinhos tbody td img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+/* Célula específica da imagem */
+#produtosCarrinhos tbody td:nth-child(2) {
+  width: 100px;
+  padding: 10px;
+}
+
+/* ===== Botão Finalizar Pedido ===== */
+#finalizarPedidoBtnT {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  margin: 30px auto;
+  padding: 10px 20px;
+  background-color: #3c4d59;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#finalizarPedidoBtnT:hover {
+  background-color: #134563;
+}
+
+#finalizarPedidoBtn {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  margin: 30px auto;
+  padding: 10px 20px;
+  background-color: #3c4d59;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#finalizarPedidoBtn:hover {
+  background-color: #134563;
+}
+
+/* ===== Seção da Tabela de Pedido ===== */
+.tabela-pedido {
+  margin-top: 40px;
+}
+
+.tabela-pedido h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+/* ===== RESPONSIVIDADE PARA IMAGENS ===== */
+@media (max-width: 768px) {
+  #produtosCarrinhos tbody td img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  #produtosCarrinhos tbody td:nth-child(2) {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  #produtosCarrinhos tbody td img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  #produtosCarrinhos tbody td:nth-child(2) {
+    width: 70px;
+  }
+}

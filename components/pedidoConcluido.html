@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido Concluido</title>
+    <script src="..//js/localStorage.js" defer></script>
+    <script src="..//js/carrinho.js" defer></script>
+    <script src="..//js/finalizarPedido.js" defer></script>
+    <script src="../js/pedidoConcluido.js" defer></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <fieldset>
+      <p id="data"></p>
+      <p id="cpf"></p>
+      <p id="nome"></p>
+      <p id="email"></p>
+      <p id="cep"></p>
+      <p id="logradouro"></p>
+      <p id="num"></p>
+      <p id="bairro"></p>
+      <p id="cidade"></p>
+      <p id="estado"></p>
+    </fieldset>
+
+    <fieldset>
+        <legend><strong>Produtos no Pedido</strong></legend>
+        <div style="overflow-x: auto;">
+          <table border="1" id="produtosCarrinhos">
+            <thead id="tHead">
+              <tr>
+                <th>ID</th>
+                <th>Imagem</th>
+                <th>Produto</th>
+                <th>Descrição</th>
+                <th>Valor Unitário</th>
+                <th>Quantidade</th>
+                <th>Valor Total</th>
+              </tr>
+            </thead>
+            <tbody id="tBody">
+              <!-- Os produtos serão carregados dinamicamente aqui -->
+            </tbody>
+          </table>
+        </div>
+      </fieldset>
+
+
+    
+    <div id="footer-placeholder"></div>
+  <script>
+    fetch("../components/header.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("header-placeholder").innerHTML = data);
+
+    fetch("../components/footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+  </script>
+</body>
+</html>

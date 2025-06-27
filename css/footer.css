@@ -1,0 +1,41 @@
+/* === RODAPÉ === */
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: auto;
+    height: 200px;
+    padding: 0 40px;
+    background-color: #444;
+    color: white;
+    z-index: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+}
+
+.footer-left {
+    text-align: left;
+}
+
+.footer-right {
+    display: flex;
+    gap: 20px;         
+    list-style: none;  
+    margin: 0;
+    padding: 0;
+}
+
+.footer-right li a {
+    text-decoration: none;
+    color: var(--blue-link);
+}
+
+.footer-social{
+    display: flex;
+    list-style: none;
+    gap: 10px;
+}
+
+.footer-social img {
+    width: 24px;
+    height: 24px;
+}

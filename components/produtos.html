@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto - TOTOY FIGURE</title>
+    <link rel="stylesheet" href="../css/produtos.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <script src="../js/dados.js"></script>
+    <script src="../js/produtos.js" defer></script>
+</head>
+<body>
+    <!-- Header será carregado aqui -->
+    <div id="header-placeholder"></div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="../index.html">Home</a> > 
+            <a href="../components/produtos.html">Produtos</a> > 
+            <span id="breadcrumb-produto">Carregando...</span>
+        </div>
+    </div>
+
+    <!-- Conteúdo principal do produto -->
+    <main class="produto-main">
+        <div class="container">
+            <div class="produto-container">
+                <!-- Galeria de imagens -->
+                <div class="produto-galeria">
+                    <div class="imagem-principal">
+                        <img id="imagem-principal" src="" alt="" />
+                        <div class="zoom-overlay">
+                            <span>Clique para ampliar</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Thumbnails (para futuras implementações) -->
+                    <div class="thumbnails">
+                        <div class="thumbnail active">
+                            <img id="thumb-1" src="" alt="" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Informações do produto -->
+                <div class="produto-info">
+                    <h1 id="produto-nome" class="produto-titulo">Carregando...</h1>
+                    
+                    <div class="produto-avaliacao">
+                        <div id="produto-estrelas" class="estrelas"></div>
+                        <span id="produto-rating" class="rating-numero">(0)</span>
+                    </div>
+
+                    <div class="produto-preco">
+                        <span id="produto-preco-atual" class="preco-atual">R$ 0,00</span>
+                        <div id="produto-parcelamento" class="parcelamento"></div>
+                    </div>
+
+                    <div class="produto-descricao">
+                        <h3>Descrição do Produto</h3>
+                        <p id="produto-descricao-texto">Carregando descrição...</p>
+                    </div>
+
+                    <div class="produto-acoes">
+                        <div class="quantidade-selector">
+                            <label for="quantidade">Quantidade:</label>
+                            <div class="quantidade-controles">
+                                <button id="diminuir-qtd" class="qtd-btn">-</button>
+                                <input type="number" id="quantidade" value="1" min="1" max="10">
+                                <button id="aumentar-qtd" class="qtd-btn">+</button>
+                            </div>
+                        </div>
+
+                        <div class="botoes-compra">
+                            <button id="btn-adicionar-carrinho" class="btn-carrinho">
+                                <span class="btn-icon">🛒</span>
+                                Adicionar ao Carrinho
+                            </button>
+                            <button id="btn-comprar-agora" class="btn-comprar-agora">
+                                Comprar Agora
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Informações adicionais -->
+                    <div class="produto-detalhes">
+                        <div class="detalhe-item">
+                            <span class="detalhe-icon">🚚</span>
+                            <div class="detalhe-info">
+                                <strong>Frete Grátis</strong>
+                                <p>Para compras acima de R$ 199</p>
+                            </div>
+                        </div>
+                        <div class="detalhe-item">
+                            <span class="detalhe-icon">🔄</span>
+                            <div class="detalhe-info">
+                                <strong>Troca Garantida</strong>
+                                <p>30 dias para trocas e devoluções</p>
+                            </div>
+                        </div>
+                        <div class="detalhe-item">
+                            <span class="detalhe-icon">🔒</span>
+                            <div class="detalhe-info">
+                                <strong>Compra Segura</strong>
+                                <p>Seus dados protegidos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Seção de produtos relacionados -->
+    <section class="produtos-relacionados">
+        <div class="container">
+            <h2 class="secao-titulo">Produtos Relacionados</h2>
+            <div class="relacionados-container">
+                <button class="seta-relacionados esquerda">⟨</button>
+                <div class="relacionados-grid" id="relacionados-grid">
+                    <!-- Produtos relacionados serão inseridos aqui -->
+                </div>
+                <button class="seta-relacionados direita">⟩</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de zoom da imagem -->
+    <div id="modal-zoom" class="modal-zoom">
+        <div class="modal-zoom-content">
+            <span class="close-zoom">&times;</span>
+            <img id="imagem-zoom" src="" alt="">
+        </div>
+    </div>
+
+    <!-- Notificação -->
+    <div id="notificacao" class="notificacao">
+        <div class="notificacao-content">
+            <span id="notificacao-texto"></span>
+            <button id="fechar-notificacao">&times;</button>
+        </div>
+    </div>
+
+    <!-- Footer será carregado aqui -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Carregar header e footer -->
+    <script>
+        fetch("../components/header.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("header-placeholder").innerHTML = data)
+            .catch(err => console.log('Erro ao carregar header:', err));
+
+        fetch("../components/footer.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("footer-placeholder").innerHTML = data)
+            .catch(err => console.log('Erro ao carregar footer:', err));
+    </script>
+</body>
+</html>

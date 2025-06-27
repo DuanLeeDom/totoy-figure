@@ -2,21 +2,99 @@ const vitrine = document.getElementById("vitrine");
 const maxCaracteres = 40;
 const btnEsquerda = document.querySelector(".seta.esquerda");
 const btnDireita = document.querySelector(".seta.direita");
-let carrinho = [];
+
+// === FUNÇÃO UTILITÁRIA: Resolver caminho da imagem ===
+function CaminhoImagem(caminho) {
+    if (caminho.startsWith("http") || caminho.startsWith("//")) {
+        return caminho.startsWith("//") ? "https:" + caminho : caminho;
+    } else {
+        return "./img/" + caminho;
+    }
+}
+
+// === FUNÇÕES DO CARRINHO ===
+function obterCarrinho() {
+    const carrinho = localStorage.getItem('carrinho');
+    return carrinho ? JSON.parse(carrinho) : [];
+}
+
+function salvarCarrinho(carrinho) {
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+}
+
+function adicionarAoCarrinho(produtoId) {
+    const produto = produtos[produtoId];
+    if (!produto) return;
+
+    const carrinho = obterCarrinho();
+    
+    // Verificar se o produto já existe no carrinho
+    const itemExistente = carrinho.find(item => item.id === produtoId);
+    
+    if (itemExistente) {
+        itemExistente.quantidade += 1;
+    } else {
+        carrinho.push({
+            id: produtoId,
+            nome: produto.nome,
+            descricao: produto.descricao,
+            preco: produto.preco,
+            imagem: produto.imagem,
+            quantidade: 1
+        });
+    }
+    
+    salvarCarrinho(carrinho);
+    atualizarBotaoCarrinho(produtoId, true);
+    
+    // Mostrar feedback visual
+    // alert(`${produto.nome} foi adicionado ao carrinho!`);
+}
+
+function removerDoCarrinho(produtoId) {
+    let carrinho = obterCarrinho();
+    carrinho = carrinho.filter(item => item.id !== produtoId);
+    salvarCarrinho(carrinho);
+    atualizarBotaoCarrinho(produtoId, false);
+}
+
+function atualizarBotaoCarrinho(produtoId, adicionado) {
+    const botao = document.querySelector(`#produto-${produtoId} .botao-carrinho`);
+    if (botao) {
+        if (adicionado) {
+            botao.textContent = "Remover do carrinho";
+            botao.classList.add("carrinho-ativo");
+            botao.onclick = () => removerDoCarrinho(produtoId);
+        } else {
+            botao.textContent = "Adicionar ao carrinho";
+            botao.classList.remove("carrinho-ativo");
+            botao.onclick = () => adicionarAoCarrinho(produtoId);
+        }
+    }
+}
+
+function verificarProdutoNoCarrinho(produtoId) {
+    const carrinho = obterCarrinho();
+    return carrinho.some(item => item.id === produtoId);
+}
+
+function irParaCarrinho() {
+    window.location.href = './components/carrinho.html';
+}
 
 // === FUNÇÃO: Renderizar produtos na vitrine ===
 function renderizarVitrine() {
     produtos.forEach((produto, index) => {
         const div = document.createElement("div");
         div.className = "produto";
-        div.id = `produto-${index + 1}`;
+        div.id = `produto-${index}`;
 
         const img = document.createElement("img");
-        img.src = produto.imagem;
+        img.src = CaminhoImagem(produto.imagem);
         img.alt = produto.nome;
 
         const titulo = document.createElement("h2");
-        const nomeCurto = produto.nome.length >= maxCaracteres
+        const nomeCurto = produto.nome.length >= maxCaracteres 
             ? produto.nome.substring(0, maxCaracteres) + "..."
             : produto.nome;
         titulo.textContent = nomeCurto;
@@ -45,13 +123,23 @@ function renderizarVitrine() {
         while (parcelas > 1 && (precoNumerico / parcelas) < 10) parcelas--;
 
         const botaoCarrinho = document.createElement("button");
-        botaoCarrinho.textContent = "Adicionar ao carrinho";
         botaoCarrinho.className = "botao-carrinho";
-        botaoCarrinho.addEventListener("click", () => {
-            carrinho.push(produto);
-            botaoCarrinho.textContent = "Cancelar";
+        
+        // Verificar se o produto já está no carrinho
+        const jaNoCarrinho = verificarProdutoNoCarrinho(index);
+        
+        if (jaNoCarrinho) {
+            botaoCarrinho.textContent = "Remover do carrinho";
             botaoCarrinho.classList.add("carrinho-ativo");
-        });
+            botaoCarrinho.onclick = () => removerDoCarrinho(index);
+        } else {
+            botaoCarrinho.textContent = "Adicionar ao carrinho";
+            botaoCarrinho.onclick = () => adicionarAoCarrinho(index);
+        }
+
+        // Botão para ir ao carrinho
+        const botaoIrCarrinho = document.createElement("button");
+        botaoIrCarrinho.onclick = irParaCarrinho;
 
         div.appendChild(img);
         div.appendChild(titulo);
@@ -68,52 +156,62 @@ function renderizarVitrine() {
 }
 
 // === SCROLL DAS SETAS ===
-btnEsquerda.addEventListener("click", () => {
-    vitrine.scrollBy({ left: -500, behavior: "smooth" });
-});
+if (btnEsquerda) {
+    btnEsquerda.addEventListener("click", () => {
+        vitrine.scrollBy({ left: -500, behavior: "smooth" });
+    });
+}
 
-btnDireita.addEventListener("click", () => {
-    vitrine.scrollBy({ left: 500, behavior: "smooth" });
-});
+if (btnDireita) {
+    btnDireita.addEventListener("click", () => {
+        vitrine.scrollBy({ left: 500, behavior: "smooth" });
+    });
+}
 
 function iniciarCarrossel() {
-  const carouselInner = document.getElementById("carousel-inner");
-  const carouselDots = document.getElementById("carousel-dots");
+    const carouselInner = document.getElementById("carousel-inner");
+    const carouselDots = document.getElementById("carousel-dots");
 
-  imagensBanner.forEach((src, index) => {
-    const img = document.createElement("img");
-    img.src = src;
-    img.alt = `Banner ${index + 1}`;
-    carouselInner.appendChild(img);
+    if (!carouselInner || !carouselDots) return;
 
-    const dot = document.createElement("span");
-    dot.classList.add("dot");
-    if (index === 0) dot.classList.add("active");
-    dot.addEventListener("click", () => {
-      mudarSlide(index);
+    imagensBanner.forEach((src, index) => {
+        const img = document.createElement("img");
+        img.src = CaminhoImagem(src);
+        img.alt = `Banner ${index + 1}`;
+        carouselInner.appendChild(img);
+
+        const dot = document.createElement("span");
+        dot.classList.add("dot");
+        if (index === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => {
+            mudarSlide(index);
+        });
+        carouselDots.appendChild(dot);
     });
-    carouselDots.appendChild(dot);
-  });
 
-  let slideAtual = 0;
-  const totalSlides = imagensBanner.length;
+    let slideAtual = 0;
+    const totalSlides = imagensBanner.length;
 
-  function mudarSlide(index) {
-    slideAtual = index;
-    carouselInner.style.transform = `translateX(-${index * 300 / totalSlides}%)`;
-    document.querySelectorAll(".carousel-dots span").forEach((dot, i) => {
-      dot.classList.toggle("active", i === index);
-    });
-  }
+    function mudarSlide(index) {
+        slideAtual = index;
+        carouselInner.style.transform = `translateX(-${index * 100}%)`;
+        document.querySelectorAll(".carousel-dots span").forEach((dot, i) => {
+            dot.classList.toggle("active", i === index);
+        });
+    }
 
-  setInterval(() => {
-    slideAtual = (slideAtual + 1) % totalSlides;
-    mudarSlide(slideAtual);
-  }, 5000); // Troca a cada 5 segundos
+    setInterval(() => {
+        slideAtual = (slideAtual + 1) % totalSlides;
+        mudarSlide(slideAtual);
+    }, 5000);
 }
 
 // === INICIALIZAÇÃO ===
 document.addEventListener("DOMContentLoaded", () => {
-    renderizarVitrine();
-    iniciarCarrossel();
+    if (vitrine && typeof produtos !== 'undefined') {
+        renderizarVitrine();
+    }
+    if (typeof imagensBanner !== 'undefined') {
+        iniciarCarrossel();
+    }
 });

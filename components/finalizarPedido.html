@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Fechar Pedido</title>
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/finalizarPedido.css">
+  <script src="../js/localStorage.js" defer></script>
+  <script src="../js/page.js" defer></script>
+  <script src="../js/carrinho.js" defer></script>
+  <script src="../js/finalizarPedido.js" defer></script>
+  <script src="../js/dados.js"></script>
+  <script src="../js/formulario.js" defer></script>
+</head>
+
+<body> 
+  <!-- Cabeçalho será carregado dinamicamente -->
+  <div id="header-placeholder"></div>
+
+  <!-- Conteúdo principal da página -->
+  <div class="pagina-pedido">
+    <h1>Fechar Pedido</h1>
+    
+    <div class="form-section">
+      <fieldset>
+        <legend><strong>Cliente</strong></legend>
+        <label>CPF: <input type="text" name="cpf" id="cpf" class="inputs"></label>
+        <label>Nome: <input type="text" name="nome" id="nome" class="inputs"></label>
+        <label>E-mail: <input type="email" id="email" name="email" class="inputs"></label>
+      </fieldset>
+    </div>
+
+    <div class="form-section">
+      <fieldset>
+        <legend><strong>Endereço</strong></legend>
+        <label>Cep: <input type="text" name="cep" id="cep" class="inputs"></label>
+        <label>Logradouro: <input type="text" id="logradouro" name="logradouro" class="inputs"></label>
+        <label>Número: <input type="text" name="numero" id="numero" class="inputs"></label>
+        <label>Bairro: <input type="text" name="bairro" id="bairro" class="inputs"></label>
+        <label>Cidade: <input type="text" name="cidade" id="cidade" class="inputs"></label>
+        <label>Estado: <input type="text" name="estado" id="estado" class="inputs"></label>
+      </fieldset>
+    </div>
+
+    <div class="tabela-pedido">
+      <h2>Pedido</h2>
+      <fieldset>
+        <legend><strong>Produtos no Pedido</strong></legend>
+        <div style="overflow-x: auto;">
+          <table border="1" id="produtosCarrinhos">
+            <thead id="tHead">
+              <tr>
+                <th>ID</th>
+                <th>Imagem</th>
+                <th>Produto</th>
+                <th>Descrição</th>
+                <th>Valor Unitário</th>
+                <th>Quantidade</th>
+                <th>Valor Total</th>
+              </tr>
+            </thead>
+            <tbody id="tBody">
+              <!-- Os produtos serão carregados dinamicamente aqui -->
+            </tbody>
+          </table>
+        </div>
+      </fieldset>
+    </div>
+
+    <button id="finalizarPedidoBtn">Finalizar Pedido</button></div>
+  <!-- Fim do conteúdo principal -->
+
+  <div id="footer-placeholder"></div>
+
+  <!-- Script para carregar header e footer -->
+  <script>
+    fetch("../components/header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
+      });
+
+    fetch("../components/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+  </script>
+</body>
+
+</html>
