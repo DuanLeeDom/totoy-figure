@@ -1,7 +1,7 @@
 /* === BANNER PRINCIPAL === */
 .banner {
     position: relative;
-    height: auto; 
+    height: auto;
     overflow: hidden;
     z-index: 0;
 }
@@ -113,7 +113,7 @@
 }
 
 /* === VITRINE DE PRODUTOS === */
-.titulo-produtos-1 h2{
+.titulo-produtos-1 h2 {
     display: flex;
     font-size: 30px;
     text-align: left;
@@ -176,7 +176,7 @@
     border: 1px solid #ddd;
     width: 200px;
     padding: 10px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     border-radius: 0px;
     white-space: nowrap;
@@ -258,12 +258,10 @@
     left: -75%;
     width: 50%;
     height: 100%;
-    background: linear-gradient(
-        120deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.4) 50%,
-        rgba(0, 0, 0, 0) 100%
-    );
+    background: linear-gradient(120deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.4) 50%,
+            rgba(0, 0, 0, 0) 100%);
     transform: skewX(-20deg);
     z-index: 1;
     pointer-events: none;
@@ -280,9 +278,11 @@
         left: -75%;
         opacity: 0;
     }
+
     50% {
         opacity: 1;
     }
+
     100% {
         left: 125%;
         opacity: 0;
@@ -291,7 +291,7 @@
 
 .produto:hover {
     transform: translateY(-5px);
-    box-shadow: 4px 8px 15px rgba(0,0,0,0.2);
+    box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .produto img {
@@ -318,13 +318,13 @@
 }
 
 .produto p {
-    font-size: 0.75em;     
-    color: #555;            
-    line-height: 1.2;           
-    word-wrap: break-word;     
-    white-space: normal;   
-    text-align: left;    
-    margin: 4px 0;              
+    font-size: 0.75em;
+    color: #555;
+    line-height: 1.2;
+    word-wrap: break-word;
+    white-space: normal;
+    text-align: left;
+    margin: 4px 0;
 }
 
 .estrelas {

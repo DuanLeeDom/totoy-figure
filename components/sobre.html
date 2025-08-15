@@ -1,65 +1,142 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre - Totoy Figure</title>
-    <link rel="stylesheet" href="../css/sobre.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <script src="../js/page.js" defer></script>
-    <script src="../js/localStorage.js" defer></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/sobre.css">
+	<link rel="stylesheet" href="../css/header.css">
+	<link rel="stylesheet" href="../css/footer.css">
+	<script src="../js/page.js" defer></script>
+	<script src="../js/localStorage.js" defer></script>
+	<title>Sobre - Totoy Figure</title>
 </head>
+
 <body>
-    <div id="header-placeholder"></div>
+	<header>
+		<div class="header-content">
+			<div class="logo-content">
+				<img src="../assets/img/logo/logo_01.png" alt="logo" id="logo">
+				<h1 class="logo">TOTOY FIGURE</h1>
+			</div>
+			<nav class="menu-nav">
+				<ul class="menu">
+					<li><a href="../index.html">Início</a></li>
+					<li><a href="">Produtos</a></li>
+					<li><a href="../components/sobre.html">Sobre</a></li>
+					<li><a href="../components/contato.html">Contato</a></li>
+				</ul>
+			</nav>
 
-    <div class="pagina-sobre">
-        <div class="hero-section">
-            <h1>Sobre Nós</h1>
-            <p class="hero-subtitle">Bem-vindo à Totoy Figure, sua loja online de action figures e colecionáveis!</p>
-        </div>
+			<div class="header-actions">
+				<div class="search-box">
+					<input type="text" placeholder="Buscar produto...">
+					<button>
+						<img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" alt="Buscar">
+					</button>
+				</div>
 
-        <div class="content-grid">
-            <div class="content-card">
-                <span class="card-icon">🎯</span>
-                <h3>Nossa Missão</h3>
-                <p>Nosso objetivo é oferecer uma ampla variedade de produtos de alta qualidade para colecionadores e entusiastas, proporcionando uma experiência única de compra.</p>
-            </div>
-            <div class="content-card">
-                <span class="card-icon">⭐</span>
-                <h3>Qualidade Premium</h3>
-                <p>Trabalhamos apenas com fornecedores confiáveis e produtos originais, garantindo autenticidade e qualidade em cada item do nosso catálogo.</p>
-            </div>
-            <div class="content-card">
-                <span class="card-icon">🚀</span>
-                <h3>Novidades Constantes</h3>
-                <p>Explore nossas categorias, descubra novidades e aproveite promoções exclusivas. Sempre atualizamos nosso estoque com os lançamentos mais esperados.</p>
-            </div>
-        </div>
+				<div class="carrinho-area">
+					<a href="../components/carrinho.html">
+						<div class="cart-icon">
+							<img src="https://cdn-icons-png.flaticon.com/512/107/107831.png" alt="Carrinho">
+						</div>
+					</a>
+					<a href="../components/carrinho.html"><span class="carrinho-texto">Carrinho</span></a>
+				</div>
 
-        <div class="stats-section">
-            <div class="stats-grid">
-                <div class="stat-item"><h4>500+</h4><p>Produtos Disponíveis</p></div>
-                <div class="stat-item"><h4>10k+</h4><p>Clientes Satisfeitos</p></div>
-                <div class="stat-item"><h4>4.5★</h4><p>Avaliação dos Clientes</p></div>
-            </div>
-        </div>
+				<nav class="header__nav-login">
+					<ul class="header__ul-login">
+						<li><a href="../components/registro.html" id="logar">Logar</a></li>
+						<li><a href="../components/registro.html" id="criarConta">Criar Conta</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<div class="pagina-sobre">
+		<div class="hero-section">
+			<h1>Sobre Nós</h1>
+			<p class="hero-subtitle">Bem-vindo à Totoy Figure, sua loja online de action figures e colecionáveis!</p>
+		</div>
 
-        <div class="cta-section">
-            <a href="../index.html" class="cta-button">Explore Nossa Loja</a>
-        </div>
-    </div>
+		<div class="content-grid">
+			<div class="content-card">
+				<span class="card-icon">🎯</span>
+				<h3>Nossa Missão</h3>
+				<p>Nosso objetivo é oferecer uma ampla variedade de produtos de alta qualidade para colecionadores e
+					entusiastas, proporcionando uma experiência única de compra.</p>
+			</div>
+			<div class="content-card">
+				<span class="card-icon">⭐</span>
+				<h3>Qualidade Premium</h3>
+				<p>Trabalhamos apenas com fornecedores confiáveis e produtos originais, garantindo autenticidade e
+					qualidade em cada item do nosso catálogo.</p>
+			</div>
+			<div class="content-card">
+				<span class="card-icon">🚀</span>
+				<h3>Novidades Constantes</h3>
+				<p>Explore nossas categorias, descubra novidades e aproveite promoções exclusivas. Sempre atualizamos
+					nosso estoque com os lançamentos mais esperados.</p>
+			</div>
+		</div>
 
-    <div id="footer-placeholder"></div>
+		<div class="stats-section">
+			<div class="stats-grid">
+				<div class="stat-item">
+					<h4>500+</h4>
+					<p>Produtos Disponíveis</p>
+				</div>
+				<div class="stat-item">
+					<h4>10k+</h4>
+					<p>Clientes Satisfeitos</p>
+				</div>
+				<div class="stat-item">
+					<h4>4.5★</h4>
+					<p>Avaliação dos Clientes</p>
+				</div>
+			</div>
+		</div>
 
-    <script>
-        fetch("../components/header.html")
-            .then(res => res.text())
-            .then(data => document.getElementById("header-placeholder").innerHTML = data);
+		<div class="cta-section">
+			<a href="../index.html" class="cta-button">Explore Nossa Loja</a>
+		</div>
+	</div>
 
-        fetch("../components/footer.html")
-            .then(res => res.text())
-            .then(data => document.getElementById("footer-placeholder").innerHTML = data);
-    </script>
+	<footer>
+		<div class="footer-content">
+			<div class="footer-left">
+				<p>&copy; 2025 Totoy Figure. Todos os direitos reservados.</p>
+			</div>
+
+			<div class="footer-center">
+				<ul class="footer-social">
+					<li><a href="#" aria-label="Facebook"><img
+								src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Facebook"></a></li>
+					<li><a href="#" aria-label="Twitter"><img
+								src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Twitter"></a></li>
+					<li><a href="#" aria-label="Instagram"><img
+								src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Instagram"></a></li>
+				</ul>
+			</div>
+
+			<ul class="footer-right">
+				<li><a href="#">Política de Privacidade</a></li>
+				<li><a href="#">Termos de Uso</a></li>
+				<li><a href="#">Suporte</a></li>
+			</ul>
+		</div>
+
+		<div class="footer-collaborators">
+			<p><strong>Colaboradores:</strong></p>
+			<ul>
+				<li>Duan Lee Dom da Silva</li>
+				<li>Lucas Henrique de Sousa Pereira</li>
+				<li>Pedro Henrique dos Santos Merces</li>
+				<li>Victor Hugo Regis de Oliveira</li>
+			</ul>
+		</div>
+	</footer>
 </body>
+
 </html>

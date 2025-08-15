@@ -238,7 +238,8 @@
     flex-wrap: wrap;
 }
 
-.btn-carrinho, .btn-comprar-agora {
+.btn-carrinho,
+.btn-comprar-agora {
     flex: 1;
     min-width: 200px;
     padding: 15px 25px;
@@ -533,13 +534,25 @@
 
 /* === ANIMAÇÕES === */
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes slideInRight {
-    from { transform: translateX(300px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
+    from {
+        transform: translateX(300px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 /* === RESPONSIVIDADE === */
@@ -548,43 +561,44 @@
         grid-template-columns: 1fr;
         gap: 30px;
     }
-    
+
     .produto-galeria {
         position: static;
     }
-    
+
     .imagem-principal img {
         height: 300px;
     }
-    
+
     .produto-titulo {
         font-size: 24px;
     }
-    
+
     .preco-atual {
         font-size: 28px;
     }
-    
+
     .botoes-compra {
         flex-direction: column;
     }
-    
-    .btn-carrinho, .btn-comprar-agora {
+
+    .btn-carrinho,
+    .btn-comprar-agora {
         min-width: auto;
     }
-    
+
     .relacionados-grid {
         padding: 10px 0;
     }
-    
+
     .produto-relacionado {
         flex: 0 0 250px;
     }
-    
+
     .seta-relacionados {
         display: none;
     }
-    
+
     .container {
         padding: 0 15px;
     }

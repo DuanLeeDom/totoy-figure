@@ -19,7 +19,7 @@ function CaminhoImagem(caminho) {
 function atualizarQuantidade(produtoId, novaQuantidade) {
     let carrinho = obterCarrinho();
     const item = carrinho.find(item => item.id === produtoId);
-    
+
     if (item) {
         if (novaQuantidade <= 0) {
             // Remove o item se a quantidade for 0 ou menor
@@ -50,12 +50,12 @@ function calcularTotal() {
 function renderizarCarrinho() {
     const tbody = document.getElementById('tBody');
     const carrinho = obterCarrinho();
-    
+
     if (!tbody) return;
-    
+
     // Limpar conteúdo atual
     tbody.innerHTML = '';
-    
+
     if (carrinho.length === 0) {
         const tr = document.createElement('tr');
         tr.innerHTML = `
@@ -69,11 +69,11 @@ function renderizarCarrinho() {
         tbody.appendChild(tr);
         return;
     }
-    
+
     carrinho.forEach((item, index) => {
         const preco = parseFloat(item.preco.replace(/\./g, "").replace(",", "."));
         const valorTotal = preco * item.quantidade;
-        
+
         const tr = document.createElement('tr');
         tr.innerHTML = `
             <td>${String(item.id + 1).padStart(3, '0')}</td>
@@ -96,7 +96,7 @@ function renderizarCarrinho() {
         `;
         tbody.appendChild(tr);
     });
-    
+
     // Adicionar linha de total
     const totalGeral = calcularTotal();
     const trTotal = document.createElement('tr');
@@ -109,7 +109,7 @@ function renderizarCarrinho() {
         </td>
     `;
     tbody.appendChild(trTotal);
-    
+
 }
 
 // === INICIALIZAÇÃO ===

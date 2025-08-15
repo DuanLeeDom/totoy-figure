@@ -1,5 +1,7 @@
 /* === GERAL === */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -32,27 +34,42 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 /* === CONTAINER DO HEADER === */
 .header-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 12px 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: 1.2rem;
 }
 
 /* === LOGO === */
-.logo {
-  font-size: 1.6rem;
-  font-weight: 700;
+.logo-content {
+  display: flex;
+  align-items: center;
+  font-size: 1.0rem;
+  font-weight: 500;
   color: white;
-  text-transform: uppercase;
   letter-spacing: 1px;
   flex-shrink: 0;
+  gap: 0 1rem;
+}
+
+.logo {
+  height: auto;
+  font-size: 1.2rem;
+}
+
+.logo,
+#logo {
+  height: auto;
+  width: 6rem;
+  size: 20px;
+  display: flex;
 }
 
 /* === MENU === */
@@ -65,7 +82,7 @@ header {
 .menu-nav .menu {
   list-style: none;
   display: flex;
-  gap: 32px;
+  gap: 1.2rem;
   padding: 0;
 }
 
@@ -85,7 +102,7 @@ header {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 1rem;
 }
 
 /* === BARRA DE PESQUISA === */
@@ -129,7 +146,7 @@ header {
 .carrinho-area {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
 }
 
 .cart-icon img {
@@ -152,7 +169,7 @@ header {
 .header__ul-login {
   list-style: none;
   display: flex;
-  gap: 14px;
+  gap: 5px;
   margin: 0;
   padding: 0;
 }
@@ -182,7 +199,8 @@ header {
   padding: 0 32px;
   display: flex;
   align-items: center;
-  justify-content: center; /* <- esta é a correção */
+  justify-content: center;
+  /* <- esta é a correção */
   height: 45px;
 }
 

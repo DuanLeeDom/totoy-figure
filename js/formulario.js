@@ -13,13 +13,13 @@ let buttonFinish = document.getElementById("finalizarPedidoBtn")
 
 
 let vetorUsuarios = recuperarLS("usuarios")
-if(vetorUsuarios == null){
+if (vetorUsuarios == null) {
     vetorUsuarios = [];
 }
 
 
 //Guardar os dados dos usuarios em um vetor de objetos no localStorage
-function criarOBJ(){
+function criarOBJ() {
     let usuario = {}
 
     usuario.cpf = iptCPF.value;
@@ -36,7 +36,7 @@ function criarOBJ(){
     return usuario;
 }
 
-function guardarObj(){
+function guardarObj() {
     let usuario = criarOBJ()
 
     vetorUsuarios.push(usuario);
@@ -45,7 +45,7 @@ function guardarObj(){
 
     let ax = pedidoConcluido();
 
-    guardarLS( "pedidos", ax)
+    guardarLS("pedidos", ax)
 
     alert("usuariosGuardados");
 
@@ -62,20 +62,20 @@ function verificarCPFExistente(cpf) {
 // Função para preencher automaticamente os campos com base no CPF
 function preencherAutomatico() {
     let cpf = iptCPF.value.trim();
-    
+
     if (cpf !== "") {
         let usuarioExistente = verificarCPFExistente(cpf);
-        
+
         if (usuarioExistente) {
             iptNome.value = usuarioExistente.nome;
             iptEmail.value = usuarioExistente.email;
             iptCEP.value = usuarioExistente.cep;
             iptLogradouro.value = usuarioExistente.logradouro;
-            iptNumero.value = usuarioExistente.numero ;
-            iptBairro.value = usuarioExistente.bairro ;
-            iptCidade.value = usuarioExistente.cidade ;
-            iptEstado.value = usuarioExistente.estado ;
-            
+            iptNumero.value = usuarioExistente.numero;
+            iptBairro.value = usuarioExistente.bairro;
+            iptCidade.value = usuarioExistente.cidade;
+            iptEstado.value = usuarioExistente.estado;
+
             alert("Dados encontrados e preenchidos automaticamente!");
         }
     }
@@ -85,7 +85,7 @@ function preencherAutomatico() {
 iptCPF.addEventListener("blur", preencherAutomatico);
 
 
-function pedidoConcluido(){
+function pedidoConcluido() {
     let pedidosConcluido = {}
 
     pedidosConcluido.data = new Date();
@@ -100,15 +100,15 @@ function pedidoConcluido(){
     pedidosConcluido.bairro = iptBairro.value;
     pedidosConcluido.cidade = iptCidade.value;
     pedidosConcluido.estado = iptEstado.value;
-    
-     let carrinho = recuperarDadosCarrinho();
+
+    let carrinho = recuperarDadosCarrinho();
     console.log(carrinho)
     pedidosConcluido.nomeP = carrinho.nome;
     pedidosConcluido.descricao = carrinho.descricao;
     pedidosConcluido.preco = carrinho.preco;
     pedidosConcluido.quantidade = carrinho.quantidade;
 
-   
+
 
     return pedidosConcluido
 }

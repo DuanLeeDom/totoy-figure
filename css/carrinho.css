@@ -1,8 +1,8 @@
 /* ===== LIMITES ===== */
 .limite-central {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 0px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 0px;
 }
 
 /* ===== ESTILOS GERAIS ===== */
@@ -11,7 +11,7 @@ fieldset {
   padding: 15px 20px;
   border-radius: 8px;
   background-color: #fff;
-  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
   margin: 10px auto;
 }
 
@@ -51,7 +51,8 @@ table {
   margin-top: 10px;
 }
 
-th, td {
+th,
+td {
   padding: 12px;
   text-align: center;
   vertical-align: middle;
@@ -104,7 +105,7 @@ th {
     width: 60px;
     height: 60px;
   }
-  
+
   #produtosCarrinhos tbody td:nth-child(2) {
     width: 80px;
   }
@@ -115,7 +116,7 @@ th {
     width: 50px;
     height: 50px;
   }
-  
+
   #produtosCarrinhos tbody td:nth-child(2) {
     width: 70px;
   }

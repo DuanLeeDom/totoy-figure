@@ -1,7 +1,5 @@
-
 /* === GERAL === */
-::after
-::before {
+::after::before {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -14,9 +12,11 @@
     --blue-link: #007bff;
 }
 
-body {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-    padding: 0; /* Remover qualquer padding do body */
-    margin: 0;  /* Garantir que não há margin no body */
+body {
+    padding: 0;
+    /* Remover qualquer padding do body */
+    margin: 0;
+    /* Garantir que não há margin no body */
     font-family: 'SF Pro Display', sans-serif;
     background-color: #f5f5f5;
 }
@@ -53,7 +53,7 @@ header h1.logo {
     color: white;
     margin: 0;
     font-size: 20px;
-    user-select: none;   
+    user-select: none;
 }
 
 /* === MENU DE NAVEGAÇÃO === */
@@ -87,7 +87,7 @@ header h1.logo {
 .search-box {
     display: flex;
     align-items: center;
-    background-color:white;
+    background-color: white;
     border-radius: 0px;
     overflow: hidden;
 }
@@ -109,7 +109,8 @@ header h1.logo {
 .search-box button img {
     width: 16px;
     height: 16px;
-    filter: invert(1); /* ícone branco */
+    filter: invert(1);
+    /* ícone branco */
 }
 
 .carrinho-area {
@@ -155,7 +156,7 @@ header h1.logo {
     background-color: #444;
     color: white;
     z-index: 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .categorias {
@@ -170,9 +171,9 @@ header h1.logo {
 }
 
 .categorias ul {
-    display: flex;    
+    display: flex;
     padding: 0;
-    margin: 0; 
+    margin: 0;
 }
 
 .categoria li {
@@ -193,12 +194,13 @@ header h1.logo {
 
 .header-categorias .categoria:hover {
     background-color: #555;
-}  
+}
 
 /* === BANNER PRINCIPAL === */
 .banner {
     position: relative;
-    height: 500px; /* Altura do banner, pode ajustar */
+    height: 500px;
+    /* Altura do banner, pode ajustar */
     overflow: hidden;
 }
 
@@ -208,7 +210,8 @@ header h1.logo {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw; /* <- cobre toda a tela, mesmo fora do conteúdo central */
+    width: 100vw;
+    /* <- cobre toda a tela, mesmo fora do conteúdo central */
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1;
@@ -222,7 +225,8 @@ header h1.logo {
     transform: translate(-50%, -30%);
     text-align: center;
     color: white;
-    z-index: 2; /* acima da camada preta */
+    z-index: 2;
+    /* acima da camada preta */
 }
 
 .title h2 {
@@ -242,7 +246,8 @@ header h1.logo {
     overflow: hidden;
     height: 100%;
     width: 100%;
-    z-index: 0; /* abaixo do texto */
+    z-index: 0;
+    /* abaixo do texto */
 }
 
 .carousel-inner {
@@ -329,7 +334,7 @@ header h1.logo {
 }
 
 /* === VITRINE DE PRODUTOS === */
-.titulo-produtos-1 h2{
+.titulo-produtos-1 h2 {
     display: flex;
     font-size: 30px;
     text-align: left;
@@ -392,7 +397,7 @@ header h1.logo {
     border: 1px solid #ddd;
     width: 200px;
     padding: 10px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     border-radius: 0px;
     white-space: nowrap;
@@ -448,12 +453,10 @@ header h1.logo {
     left: -75%;
     width: 50%;
     height: 100%;
-    background: linear-gradient(
-        120deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.4) 50%,
-        rgba(0, 0, 0, 0) 100%
-    );
+    background: linear-gradient(120deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.4) 50%,
+            rgba(0, 0, 0, 0) 100%);
     transform: skewX(-20deg);
     z-index: 1;
     pointer-events: none;
@@ -471,9 +474,11 @@ header h1.logo {
         left: -75%;
         opacity: 0;
     }
+
     50% {
         opacity: 1;
     }
+
     100% {
         left: 125%;
         opacity: 0;
@@ -482,7 +487,7 @@ header h1.logo {
 
 .produto:hover {
     transform: translateY(-5px);
-    box-shadow: 4px 8px 15px rgba(0,0,0,0.2);
+    box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .produto img {
@@ -509,13 +514,13 @@ header h1.logo {
 }
 
 .produto p {
-    font-size: 0.75em;     
-    color: #555;            
-    line-height: 1.2;           
-    word-wrap: break-word;     
-    white-space: normal;   
-    text-align: left;    
-    margin: 4px 0;              
+    font-size: 0.75em;
+    color: #555;
+    line-height: 1.2;
+    word-wrap: break-word;
+    white-space: normal;
+    text-align: left;
+    margin: 4px 0;
 }
 
 .estrelas {
@@ -542,7 +547,7 @@ header h1.logo {
     background-color: #444;
     color: white;
     z-index: 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .footer-left {
@@ -551,8 +556,8 @@ header h1.logo {
 
 .footer-right {
     display: flex;
-    gap: 20px;         
-    list-style: none;  
+    gap: 20px;
+    list-style: none;
     margin: 0;
     padding: 0;
 }
@@ -562,7 +567,7 @@ header h1.logo {
     color: var(--blue-link);
 }
 
-.footer-social{
+.footer-social {
     display: flex;
     list-style: none;
     gap: 10px;

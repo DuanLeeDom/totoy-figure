@@ -1,5 +1,4 @@
 // === FUNÇÕES DE REGISTRO DE USUÁRIO ===
-
 function obterUsuarios() {
     const usuarios = localStorage.getItem('usuarios');
     return usuarios ? JSON.parse(usuarios) : [];
@@ -34,17 +33,17 @@ function formatarCEP(input) {
 
 function buscarCEP(cep) {
     const cepLimpo = cep.replace(/\D/g, '');
-    
+
     if (cepLimpo.length === 8) {
         // Mostrar feedback de carregamento
         const bairroInput = document.querySelector('input[name="bairro"]');
         const cidadeInput = document.querySelector('input[name="cidade"]');
         const estadoInput = document.querySelector('input[name="estado"]');
-        
+
         bairroInput.value = 'Carregando...';
         cidadeInput.value = 'Carregando...';
         estadoInput.value = 'Carregando...';
-        
+
         fetch(`https://viacep.com.br/ws/${cepLimpo}/json/`)
             .then(response => response.json())
             .then(data => {
@@ -81,17 +80,17 @@ function validarFormularioRegistro() {
         cidade: document.querySelector('input[name="cidade"]'),
         estado: document.querySelector('input[name="estado"]')
     };
-    
+
     let valido = true;
     let mensagem = '';
-    
+
     // Limpar estilos anteriores
     Object.values(campos).forEach(campo => {
         if (campo) {
             campo.style.borderColor = '';
         }
     });
-    
+
     // Validar campos obrigatórios
     Object.entries(campos).forEach(([nome, campo]) => {
         if (!campo || !campo.value.trim()) {
@@ -106,7 +105,7 @@ function validarFormularioRegistro() {
             }
         }
     });
-    
+
     // Validação específica do CPF
     if (campos.cpf && campos.cpf.value.trim()) {
         const cpf = campos.cpf.value.replace(/\D/g, '');
@@ -125,7 +124,7 @@ function validarFormularioRegistro() {
             }
         }
     }
-    
+
     // Validação do email
     if (campos.email && campos.email.value.trim()) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -136,7 +135,7 @@ function validarFormularioRegistro() {
         } else {
             // Verificar se email já existe
             const usuarios = obterUsuarios();
-            const emailExiste = usuarios.some(usuario => 
+            const emailExiste = usuarios.some(usuario =>
                 usuario.email.toLowerCase() === campos.email.value.toLowerCase()
             );
             if (emailExiste) {
@@ -146,7 +145,7 @@ function validarFormularioRegistro() {
             }
         }
     }
-    
+
     // Validação do CEP
     if (campos.cep && campos.cep.value.trim()) {
         const cep = campos.cep.value.replace(/\D/g, '');
@@ -156,18 +155,18 @@ function validarFormularioRegistro() {
             campos.cep.style.borderColor = '#dc3545';
         }
     }
-    
+
     return { valido, mensagem };
 }
 
 function finalizarRegistro() {
     const validacao = validarFormularioRegistro();
-    
+
     if (!validacao.valido) {
         alert('Corrija os seguintes erros:\n\n' + validacao.mensagem);
         return;
     }
-    
+
     // Coletar dados do formulário
     const dadosUsuario = {
         cpf: document.querySelector('input[name="cpf"]').value.trim(),
@@ -183,18 +182,18 @@ function finalizarRegistro() {
         dataRegistro: new Date().toLocaleString('pt-BR'),
         id: Date.now()
     };
-    
+
     // Obter usuários existentes e adicionar o novo
     const usuarios = obterUsuarios();
     usuarios.push(dadosUsuario);
     salvarUsuarios(usuarios);
-    
+
     // Salvar como usuário logado
     salvarUsuarioLogado(dadosUsuario);
-    
+
     // Mostrar confirmação
     alert(`Registro realizado com sucesso!\n\nBem-vindo(a), ${dadosUsuario.nome}!\n\nVocê será redirecionado para continuar suas compras.`);
-    
+
     // Redirecionar para página inicial ou carrinho se houver produtos
     const carrinho = localStorage.getItem('carrinho');
     if (carrinho && JSON.parse(carrinho).length > 0) {
@@ -206,7 +205,7 @@ function finalizarRegistro() {
 
 function preencherDadosUsuarioLogado() {
     const usuario = obterUsuarioLogado();
-    
+
     if (usuario) {
         // Preencher campos do formulário
         const cpfInput = document.querySelector('input[name="cpf"]');
@@ -217,7 +216,7 @@ function preencherDadosUsuarioLogado() {
         const bairroInput = document.querySelector('input[name="bairro"]');
         const cidadeInput = document.querySelector('input[name="cidade"]');
         const estadoInput = document.querySelector('input[name="estado"]');
-        
+
         if (cpfInput) cpfInput.value = usuario.cpf;
         if (nomeInput) nomeInput.value = usuario.nome;
         if (emailInput) emailInput.value = usuario.email;
@@ -226,7 +225,7 @@ function preencherDadosUsuarioLogado() {
         if (bairroInput) bairroInput.value = usuario.endereco.bairro;
         if (cidadeInput) cidadeInput.value = usuario.endereco.cidade;
         if (estadoInput) estadoInput.value = usuario.endereco.estado;
-        
+
         // Alterar texto do botão se usuário já estiver logado
         const btnFinalizar = document.getElementById('finalizarPedidoBtn');
         if (btnFinalizar && btnFinalizar.textContent === 'Finalizar registro') {
@@ -252,26 +251,26 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.location.pathname.includes('registro.html')) {
         preencherDadosUsuarioLogado();
     }
-    
+
     // Configurar eventos
     const btnFinalizar = document.getElementById('finalizarPedidoBtn');
     if (btnFinalizar) {
         btnFinalizar.addEventListener('click', finalizarRegistro);
     }
-    
+
     // Configurar formatação do CPF
     const cpfInput = document.querySelector('input[name="cpf"]');
     if (cpfInput) {
         cpfInput.addEventListener('input', (e) => formatarCPF(e.target));
     }
-    
+
     // Configurar formatação do CEP
     const cepInput = document.querySelector('input[name="cep"]');
     if (cepInput) {
         cepInput.addEventListener('input', (e) => formatarCEP(e.target));
         cepInput.addEventListener('blur', (e) => buscarCEP(e.target.value));
     }
-    
+
     // Adicionar validação em tempo real nos campos
     const inputs = document.querySelectorAll('.inputs');
     inputs.forEach(input => {

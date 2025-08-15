@@ -8,7 +8,7 @@ const TEXTOS_BOTAO = {
 const categorizarProdutos = () => {
     const categorias = {
         'action-figures': [],
-        'estatuetas': [], 
+        'estatuetas': [],
         'colecionaveis': [],
         'acessorios': [],
         'novidades': [],
@@ -18,33 +18,33 @@ const categorizarProdutos = () => {
     produtos.forEach((produto, index) => {
         const descricao = produto.descricao.toLowerCase();
         const preco = parseFloat(produto.preco.replace(/\./g, "").replace(",", "."));
-        
+
         // Produtos com "figura articulada" ou preço entre 300-800 = Action Figures
-        if (descricao.includes('articulada') || descricao.includes('pose dinâmica') || 
+        if (descricao.includes('articulada') || descricao.includes('pose dinâmica') ||
             (preco >= 300 && preco <= 800)) {
-            categorias['action-figures'].push({...produto, index});
+            categorias['action-figures'].push({ ...produto, index });
         }
         // Produtos com "estátua", "miniatura" ou preço acima de 1000 = Estatuetas
-        else if (descricao.includes('estátua') || descricao.includes('miniatura') || 
-                 descricao.includes('acabamento premium') || preco >= 1000) {
-            categorias['estatuetas'].push({...produto, index});
+        else if (descricao.includes('estátua') || descricao.includes('miniatura') ||
+            descricao.includes('acabamento premium') || preco >= 1000) {
+            categorias['estatuetas'].push({ ...produto, index });
         }
         // Produtos com "colecionável", "coleção" ou "edição especial" = Colecionáveis
-        else if (descricao.includes('colecionável') || descricao.includes('coleção') || 
-                 descricao.includes('edição especial') || descricao.includes('exclusivo')) {
-            categorias['colecionaveis'].push({...produto, index});
+        else if (descricao.includes('colecionável') || descricao.includes('coleção') ||
+            descricao.includes('edição especial') || descricao.includes('exclusivo')) {
+            categorias['colecionaveis'].push({ ...produto, index });
         }
         // Produtos com preço baixo (abaixo de 100) = Promoções
         else if (preco < 100) {
-            categorias['promocoes'].push({...produto, index});
+            categorias['promocoes'].push({ ...produto, index });
         }
         // Produtos dos últimos 6 do array = Novidades
         else if (index >= produtos.length - 6) {
-            categorias['novidades'].push({...produto, index});
+            categorias['novidades'].push({ ...produto, index });
         }
         // Resto vai para colecionáveis
         else {
-            categorias['colecionaveis'].push({...produto, index});
+            categorias['colecionaveis'].push({ ...produto, index });
         }
     });
 
@@ -75,9 +75,9 @@ function adicionarAoCarrinho(produtoId) {
     if (!produto) return;
 
     const carrinho = obterCarrinho();
-    
+
     const itemExistente = carrinho.find(item => item.id === produtoId);
-    
+
     if (itemExistente) {
         itemExistente.quantidade += 1;
     } else {
@@ -90,7 +90,7 @@ function adicionarAoCarrinho(produtoId) {
             quantidade: 1
         });
     }
-    
+
     salvarCarrinho(carrinho);
     atualizarBotaoCarrinho(produtoId, true);
 }
@@ -137,7 +137,7 @@ function criarElementoProduto(produto, index) {
     img.alt = produto.nome;
 
     const titulo = document.createElement("h2");
-    const nomeCurto = produto.nome.length >= maxCaracteres 
+    const nomeCurto = produto.nome.length >= maxCaracteres
         ? produto.nome.substring(0, maxCaracteres) + "..."
         : produto.nome;
     titulo.textContent = nomeCurto;
@@ -167,9 +167,9 @@ function criarElementoProduto(produto, index) {
 
     const botaoCarrinho = document.createElement("button");
     botaoCarrinho.className = "botao-carrinho";
-    
+
     const jaNoCarrinho = verificarProdutoNoCarrinho(index);
-    
+
     if (jaNoCarrinho) {
         botaoCarrinho.textContent = TEXTOS_BOTAO.cancelar;
         botaoCarrinho.classList.add("carrinho-ativo");
@@ -209,7 +209,7 @@ function renderizarCategoria(categoria, produtosCategoria) {
 // === FUNÇÃO: Renderizar todas as categorias ===
 function renderizarTodasCategorias() {
     const categorias = categorizarProdutos();
-    
+
     // Renderizar cada categoria
     Object.keys(categorias).forEach(categoria => {
         renderizarCategoria(categoria, categorias[categoria]);

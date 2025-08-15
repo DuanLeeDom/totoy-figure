@@ -7,7 +7,7 @@ const imagensBanner = [
   "//nerdarena.in/cdn/shop/files/zd-banner1.jpg?v=1725455222&width=1920",
 ];
 
-function retornarObj(){
+function retornarObj() {
   return produtos;
 }
 
